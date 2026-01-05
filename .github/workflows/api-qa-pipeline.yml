@@ -22,9 +22,12 @@ jobs:
       - name: Install Newman
         run: npm install -g newman newman-reporter-html
 
+      - name: Create reports folder
+        run: mkdir -p reports
+
       - name: Run API Tests
         run: |
-          newman run tests/collection.json \
-          -e tests/environment.json \
+          newman run "API QA Automation.postman_collection.json" \
+          -e "API QA Automation.postman_environment.json" \
           -r cli,html \
-          --reporter-html-export reports/report.html
+          --reporter-html-export "reports/report.html"
